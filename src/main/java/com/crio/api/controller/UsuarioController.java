@@ -2,6 +2,7 @@ package com.crio.api.controller;
 
 import com.crio.api.domain.usuario.Usuario;
 import com.crio.api.domain.usuario.UsuarioRequestDTO;
+import com.crio.api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
