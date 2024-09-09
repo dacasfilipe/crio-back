@@ -41,7 +41,7 @@ public class UsuarioController {
     //Retorna o usuario pelo Id
     @GetMapping("/{id}") //  /api/usuario/12o13y23y-3123-rewre321
     public ResponseEntity<Usuario> getUserById(@PathVariable("id")UUID id){
-        Usuario usuario = this.usuarioService.getUserById();
+        Usuario usuario = this.usuarioService.getUserById(id);
         return ResponseEntity.ok(usuario);
     }
 }
