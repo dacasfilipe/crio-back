@@ -44,4 +44,20 @@ public class UsuarioController {
         Usuario usuario = this.usuarioService.getUserById(id);
         return ResponseEntity.ok(usuario);
     }
+
+    //Atualizar os dados do usuario
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> updateUser(
+            @PathVariable("id")UUID id, UsuarioRequestDTO usuarioRequestDTO){
+        Usuario updatedUsuario = this.usuarioService.updateUser(id,usuarioRequestDTO);
+        System.out.println(usuarioRequestDTO);
+        return ResponseEntity.ok(updatedUsuario);
+    }
+    //deletar Usuario
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("id")UUID id){
+        this.usuarioService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
