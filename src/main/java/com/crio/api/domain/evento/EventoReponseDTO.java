@@ -1,5 +1,6 @@
 package com.crio.api.domain.evento;
 
+import com.crio.api.domain.endereco.Endereco;
 import com.crio.api.domain.usuario.Usuario;
 
 import java.time.LocalDateTime;
@@ -13,6 +14,9 @@ public record EventoReponseDTO(
         LocalDateTime fim,
         String local,
         boolean privado,
-        Usuario usuario
-) {
-}
+        String linkEvento,
+        String comoChegar,
+        String linkForms,
+        Usuario usuario,
+        Endereco endereco) { }
+
