@@ -13,24 +13,22 @@ import java.util.UUID;
 public interface UsuarioRepository extends
         JpaRepository<Usuario, UUID> {
     //selecionar todos os usuarios
-    @Query("SELECT u FROM usuario u")
-    List<Usuario> findAll();
+    @Query("SELECT u FROM Usuario u")
+    List<Usuario> findAllUsuario();
     //selecionar um usuario pelo seu id
-    @Query("SELECT u FROM usuario u WHERE u.id = :id")
-    Optional<Usuario> findById(UUID id);
-    //salvar um usuario
-    @Query("INSERT INTO usuario(nomeCompleto, email, senha, tipo,"+
-    "createdAt,updatedAt) VALUES(:nomeCompleto,:email,:senha,:tipo,"+
-    ":createdAt,:updatedAt)")
-    Usuario save(String nomeCompleto, String email, String senha,
-                 int tipo, LocalDateTime createdAt, LocalDateTime updatedAt);
+    @Query("SELECT u FROM Usuario u WHERE u.id = :id")
+    Optional<Usuario> findByIdUsuario(UUID id);
+    //salvar um usuario MÈTODO INSERT NÂO ESTÀ HABILITADO NO @Query
+//    @Query("INSERT INTO Usuario(nomeCompleto, email, senha, tipo,createdAt,updatedAt) VALUES(:nomeCompleto,:email,:senha,:tipo,:createdAt,:updatedAt)")
+//    Usuario saveUsuario(String nomeCompleto, String email, String senha,
+//                 int tipo, LocalDateTime createdAt, LocalDateTime updatedAt);
     //atualizar usuario
-    @Query("UPDATE usuario u SET u.nomeCompleto=:nomeCompleto, "+
+    @Query("UPDATE Usuario u SET u.nomeCompleto=:nomeCompleto, "+
     "u.email = :email, u.senha = :senha, u.tipo = :tipo, "+
     "u.updatedAt = :updatedAt WHERE u.id = :id")
-    void update(UUID id,String nomeCompleto, String email, String senha,
+    void updateUsuario(UUID id,String nomeCompleto, String email, String senha,
                 int tipo, LocalDateTime updatedAt);
     //deletar usuario
-    @Query("DELETE FROM usuario u WHERE u.id = :id")
-    void deleteById(UUID id);
+    @Query("DELETE FROM Usuario u WHERE u.id = :id")
+    void deleteByIdUsuario(UUID id);
 }

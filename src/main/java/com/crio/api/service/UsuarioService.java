@@ -15,6 +15,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+
     public Usuario createUsuario(UsuarioRequestDTO data){
         //cria um usuario vazio
         Usuario newUsuario = new Usuario();
@@ -25,6 +26,15 @@ public class UsuarioService {
         newUsuario.setTipo(data.tipo());
         usuarioRepository.save(newUsuario);
         return newUsuario;
+    }
+
+    //save do usuariorepository
+    public Usuario save(String nomeCompleto, String email, String senha,
+                        int tipo, LocalDateTime createdAt,
+                        LocalDateTime updatedAt){
+
+       return usuarioRepository.saveUsuario(nomeCompleto, email, senha,
+        tipo, createdAt,updatedAt);
     }
 
 
