@@ -14,7 +14,23 @@ import java.util.UUID;
 public class EventoService {
     @Autowired
     private EventoRepository eventoRepository;
+    public List<Evento> findByUsuarioId(UUID usuarioId) {
+        // Adicione aqui qualquer lógica de negócio adicional, como validações ou tratamento de exceções
+        return eventoRepository.findByUsuarioId(usuarioId);
+    }
 
+    public List<Evento> findByIntervaloData(LocalDateTime inicio, LocalDateTime fim) {
+        return eventoRepository.findByIntervaloData(inicio, fim);
+    }
+    public List<Evento> findByLocal(String local) {
+        return eventoRepository.findByLocal(local);
+    }
+
+    public List<Evento> findByLocalAndIntervaloData(String local, LocalDateTime inicio, LocalDateTime fim) {
+        return eventoRepository.findByLocalAndIntervaloData(local, inicio, fim);
+    }
+
+    //Crud genérico
     public Evento createEvento(EventoRequestDTO data){
         //cria um evento vazio
         Evento newEvento = new Evento();

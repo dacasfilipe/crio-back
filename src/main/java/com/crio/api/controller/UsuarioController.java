@@ -21,19 +21,6 @@ public class UsuarioController {
 
 
     //CRUD
-    @PostMapping("/save") //        /api/usuario/save
-    public Usuario save(@RequestBody UsuarioRequestDTO usuarioRequestDTO){
-        System.out.println(usuarioRequestDTO);
-        return usuarioService.save(
-                usuarioRequestDTO.nomeCompleto(),
-                usuarioRequestDTO.email(),
-                usuarioRequestDTO.senha(),
-                usuarioRequestDTO.tipo(),
-                LocalDateTime.now(), //createdAt
-                LocalDateTime.now()  //updatedAt
-        );
-    }
-
 
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Usuario> create(

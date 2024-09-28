@@ -3,11 +3,12 @@ package com.crio.api.controller;
 import com.crio.api.domain.endereco.Endereco;
 import com.crio.api.domain.evento.Evento;
 import com.crio.api.domain.evento.EventoRequestDTO;
+import com.crio.api.domain.evento.IntervaloDataDTO;
+import com.crio.api.domain.evento.LocalIntervaloDTO;
 import com.crio.api.domain.usuario.Usuario;
 import com.crio.api.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,34 @@ public class EventoController {
     //criar um objeto service
     @Autowired
     private EventoService eventoService;
+
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<List<Evento>> findByUsuarioId(@PathVariable UUID usuarioId) {
+        List<Evento> eventos = eventoService.findByUsuarioId(usuarioId);
+        return ResponseEntity.ok(eventos);
+    }
+    //procurar evento pro intervalo de data
+    @PostMapping("/intervalo")
+    public ResponseEntity<List<Evento>> findByIntervaloData(@RequestBody IntervaloDataDTO intervaloData) {
+        List<Evento> eventos = eventoService.findByIntervaloData(intervaloData.getInicio(), intervaloData.getFim());
+        return ResponseEntity.ok(eventos);
+    }
+    @GetMapping("/local/{local}")
+    public ResponseEntity<List<Evento>> findByLocal(@PathVariable String local) {
+        List<Evento> eventos = eventoService.findByLocal(local);
+        return ResponseEntity.ok(eventos);
+    }
+
+    @PostMapping("/local-intervalo")
+    public ResponseEntity<List<Evento>> findByLocalAndIntervaloData(@RequestBody LocalIntervaloDTO localIntervaloDTO) {
+        List<Evento> eventos = eventoService.findByLocalAndIntervaloData(
+                localIntervaloDTO.getLocal(),
+                localIntervaloDTO.getInicio(),
+                localIntervaloDTO.getFim()
+        );
+        return ResponseEntity.ok(eventos);
+    }
+
     //CRUD
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Evento> create(

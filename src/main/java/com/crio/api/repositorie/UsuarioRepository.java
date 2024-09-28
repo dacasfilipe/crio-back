@@ -31,4 +31,10 @@ public interface UsuarioRepository extends
     //deletar usuario
     @Query("DELETE FROM Usuario u WHERE u.id = :id")
     void deleteByIdUsuario(UUID id);
+
+    @Query("SELECT u FROM Usuario u WHERE u.email = :email")
+    Optional<Usuario> findByEmail(String email);
+
+    @Query("SELECT u FROM Usuario u WHERE u.tipo = :tipo")
+    List<Usuario> findByTipo(int tipo);
 }
