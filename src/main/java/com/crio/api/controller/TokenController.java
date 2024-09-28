@@ -32,7 +32,7 @@ public class TokenController {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+    //add bruno for test API
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
 
