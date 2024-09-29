@@ -1,21 +1,19 @@
 package com.crio.api;
 
+import io.github.cdimascio.dotenv.Dotenv;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import io.github.cdimascio.dotenv.Dotenv;
+
 
 
 @SpringBootApplication
 public class ApiApplication {
 
 	public static void main(String[] args) {
-		// Carregar o arquivo .env
 		Dotenv dotenv = Dotenv.load();
-
-		// Exemplo: puxar uma variável do .env
-		String googleClientId = dotenv.get("GOOGLE_CLIENT_ID");
-		System.out.println("Google Client ID: " + googleClientId);
-
+		System.out.println("username:"+dotenv.get("DB_USERNAME"));
+		System.out.println("password:"+dotenv.get("DB_PASSWORD"));
 		SpringApplication.run(ApiApplication.class, args);
 	}
 
