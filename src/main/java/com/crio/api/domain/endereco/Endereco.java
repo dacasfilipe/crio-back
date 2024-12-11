@@ -22,4 +22,7 @@ public class Endereco {
     String city;
     @Column(length = 2)
     String uf;
+
+    public Endereco(EnderecoResponseDTO data) {
+    }
 }

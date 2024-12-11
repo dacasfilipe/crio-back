@@ -30,7 +30,7 @@ public class EnderecoController {
                 this.enderecoService.createEndereco(enderecoRequestDTO);
         return ResponseEntity.ok(newEndereco);
     }
-    //Retornar todos os usuários
+    //Retornar todos os endereços
     @GetMapping
     public ResponseEntity<List<Endereco>> getAllUsers(){
         List<Endereco> enderecos = this.enderecoService.getAllEnderecos();
